@@ -22,7 +22,9 @@ class Chat_Affiliate_Shortcodes {
         $products = new WP_Query($args);
     
         if ($products->have_posts()) {
-            $output = '<div class="row">';  // Bootstrap grid sistemi için row ekleniyor
+            $output = '
+            <h2 class="product-main-title">Related Products</h2>
+            <div class="product-container">';  // Bootstrap grid sistemi için row ekleniyor
     
             while ($products->have_posts()) {
                 $products->the_post();
@@ -33,23 +35,22 @@ class Chat_Affiliate_Shortcodes {
                 $target_url = get_post_meta($id, '_target_url', true);
                 $thumbnail_url = get_the_post_thumbnail_url($id, 'thumbnail');
     
-                $output .= '<div class="col-md-4">';  // Her ürün için bir kolon oluşturuluyor
-                $output .= '<div class="card">';  // Bootstrap card componenti
+                $output .= '<div class="product-item">';  // Her ürün için bir kolon oluşturuluyor
+               
                 if ($thumbnail_url) {
                     $output .= '<img src="' . $thumbnail_url . '" class="card-img-top" alt="' . $title . '">';  // Ürün resmi
                 }
-                $output .= '<div class="card-body">';
-                $output .= '<h5 class="card-title">' . $title . '</h5>';  // Ürün başlığı
+                $output .= '<div class="product-item-details">';
+                $output .= '<h2 class="product-item-title">' . $title . '</h2>';  // Ürün başlığı
     
                 if ($atts['fiyat'] === 'true' && $price) {
-                    $output .= '<p class="card-text">Fiyat: $' . $price . '</p>';  // Fiyat bilgisi
+                    $output .= '<p class="product-item-price">Price: $' . $price . '</p>';  // Fiyat bilgisi
                 }
                 if ($atts['aciklama'] === 'true' && $description) {
-                    $output .= '<p class="card-text">' . $description . '</p>';  // Açıklama
+                    $output .= '<p class="product-item-description">' . $description . '</p>';  // Açıklama
                 }
     
-                $output .= '<a href="' . $target_url . '" class="btn btn-primary" target="_blank">İncele</a>';  // İncele butonu
-                $output .= '</div>';
+                $output .= '<a href="' . $target_url . '" class="product-item-button" target="_blank" rel="nofollow">Visit to Website</a>';  // İncele butonu
                 $output .= '</div>';
                 $output .= '</div>';
             }
@@ -58,8 +59,6 @@ class Chat_Affiliate_Shortcodes {
     
             wp_reset_postdata();
             return $output;
-        } else {
-            return '<p>Ürün bulunamadı.</p>';
         }
     }
     

@@ -92,6 +92,10 @@ class Chat_Affiliate_Meta_Boxes {
             wp_set_post_terms( $post_id, (int)$_POST['product_category'], 'product_category' );
         }
 
+        if (isset($_POST['description'])) {
+            update_post_meta($post_id, '_description', sanitize_text_field($_POST['description']));
+        }
+
         if (!get_post_meta($post_id, '_click_count', true)) {
             update_post_meta($post_id, '_click_count', 0);
         }

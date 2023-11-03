@@ -2,3 +2,65 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.product-main-title{
+    font-size: 24px;
+    font-weight: 500;    
+    font-family: inherit;
+}
+
+ .product-container {
+    width: 100%;
+ }
+
+ .product-item{
+    width: 100%;
+    min-height: 130px;
+    margin-bottom: 1rem;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 8px 3px rgb(228 228 228 / 45%);
+ }
+
+ .product-item img{
+    float:left;
+    max-width: 20%;
+    margin-right:1rem;
+ }
+
+ .product-item-title{
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+ }
+
+ .product-item-price{
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+ }
+
+ .product-item-description{
+    font-size: 12px;
+    color:grey;
+ }
+
+ .product-item-details{
+    float:left;
+    max-width: 75%;
+ }
+
+ .product-item-button{
+    background-color: #4caf50;
+    color: #fff!important;
+    font-size: 13px;
+    padding: 8px;
+    min-width: 20%;
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 8px;
+ }
+
+ .product-item-button:hover{
+    background-color: #8bc34a;
+ }
